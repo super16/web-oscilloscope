@@ -1,26 +1,46 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <TheHeader />
+  <main>
+    <TheOscilloscope />
+    <div class="controllers">
+      <TheOscillatorController />
+      <TheNoiseController />
+    </div>
+  </main>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import TheHeader from '@/components/TheHeader.vue';
+import TheNoiseController from '@/components/TheNoiseController.vue';
+import TheOscilloscope from '@/components/TheOscilloscope.vue';
+import TheOscillatorController from '@/components/TheOscillatorController.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    TheHeader,
+    TheNoiseController,
+    TheOscillatorController,
+    TheOscilloscope,
   },
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+.controllers {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media screen
+  and (min-device-width: 1025px)
+  and (max-device-width: 4800px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+    .controllers {
+      display: flex;
+      flex-direction: column;
+      width: auto;
+    }
 }
 </style>
