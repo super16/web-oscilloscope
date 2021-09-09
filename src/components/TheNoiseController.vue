@@ -1,6 +1,6 @@
 <template>
   <fieldset class="controller">
-    <legend>NOISE</legend>
+    <legend v-once>NOISE</legend>
     <label class="controller__label">
       LEVEL
       <input
@@ -15,18 +15,19 @@
   </fieldset>
 </template>
 
-<script>
+<script lang='ts'>
+import { defineComponent } from 'vue';
 import { mapState, mapMutations } from 'vuex';
 
-export default {
+export default defineComponent({
   name: 'TheNoiseController',
   computed: {
     ...mapState(['noiseLevel']),
     noiseLevelValue: {
-      get() {
+      get(): number {
         return this.noiseLevel;
       },
-      set(value) {
+      set(value: number) {
         this.updateNoiseLevel(value);
       },
     },
@@ -34,7 +35,7 @@ export default {
   methods: {
     ...mapMutations(['updateNoiseLevel']),
   },
-};
+});
 </script>
 
 <style scoped>

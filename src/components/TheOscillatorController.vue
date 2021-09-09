@@ -1,6 +1,6 @@
 <template>
   <fieldset class="controller">
-    <legend>WAVE GENERATOR</legend>
+    <legend v-once>WAVE GENERATOR</legend>
       <div class="controller__faders">
         <label class="controller__label">
           AMPLITUDE
@@ -40,10 +40,18 @@
   </fieldset>
 </template>
 
-<script>
+<script lang='ts'>
+import { defineComponent } from 'vue';
 import { mapState, mapMutations } from 'vuex';
 
-export default {
+interface waveTypesInterface {
+  sine: number,
+  square: number,
+  triangular: number,
+  saw: number,
+}
+
+export default defineComponent({
   name: 'TheOscillatorController',
   data() {
     return {
@@ -52,7 +60,7 @@ export default {
         square: 1,
         triangular: 2,
         saw: 3,
-      },
+      } as waveTypesInterface,
     };
   },
   computed: {
@@ -60,26 +68,26 @@ export default {
       'amplitude', 'frequency', 'heightLimit', 'widthLimit', 'waveChoice',
     ]),
     amplitudeValue: {
-      get() {
+      get(): number {
         return this.amplitude;
       },
-      set(value) {
+      set(value: number) {
         this.updateAmplitude(value);
       },
     },
     frequencyValue: {
-      get() {
+      get(): number {
         return this.frequency;
       },
-      set(value) {
+      set(value: number) {
         this.updateFrequency(value);
       },
     },
     waveChoiceValue: {
-      get() {
+      get(): number {
         return this.waveChoice;
       },
-      set(value) {
+      set(value: number) {
         this.updateWaveChoice(value);
       },
     },
@@ -89,7 +97,7 @@ export default {
       'updateAmplitude', 'updateFrequency', 'updateWaveChoice',
     ]),
   },
-};
+});
 </script>
 
 <style scoped>

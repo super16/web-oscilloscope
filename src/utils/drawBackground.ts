@@ -1,8 +1,10 @@
-export default function drawBackground(ctx) {
+export default function drawBackground(
+  ctx: CanvasRenderingContext2D
+): CanvasRenderingContext2D {
   const context = ctx;
   context.clearRect(0, 0, context.canvas.width, context.canvas.height);
   context.shadowColor = '';
-  context.shadowBlur = '';
+  context.shadowBlur = 0;
   context.beginPath();
   context.lineWidth = 1;
   context.strokeStyle = 'gray';

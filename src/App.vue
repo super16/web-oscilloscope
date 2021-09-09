@@ -9,13 +9,14 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import TheHeader from '@/components/TheHeader.vue';
 import TheNoiseController from '@/components/TheNoiseController.vue';
 import TheOscilloscope from '@/components/TheOscilloscope.vue';
 import TheOscillatorController from '@/components/TheOscillatorController.vue';
 
-export default {
+export default defineComponent({
   name: 'App',
   components: {
     TheHeader,
@@ -23,7 +24,7 @@ export default {
     TheOscillatorController,
     TheOscilloscope,
   },
-};
+});
 </script>
 
 <style scoped>
@@ -32,7 +33,6 @@ export default {
   flex-direction: column;
   width: 100%;
 }
-
 @media screen
   and (min-device-width: 1025px)
   and (max-device-width: 4800px)

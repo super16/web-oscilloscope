@@ -1,6 +1,6 @@
 <template>
   <fieldset class="oscilloscope">
-    <legend>DISPLAY</legend>
+    <legend v-once>DISPLAY</legend>
     <canvas
       class="oscilloscope__canvas"
       id="oscilloscopeCanvas"
@@ -10,17 +10,33 @@
   </fieldset>
 </template>
 
-<script>
+<script lang='ts'>
+import { defineComponent } from 'vue';
 import { mapState, mapMutations } from 'vuex';
 import drawBackground from '@/utils/drawBackground';
 import Wave from '@/utils/waveForm';
 
-export default {
+interface waveOptionsInterface {
+  0: string,
+  1: string,
+  2: string,
+  3: string,
+}
+
+interface OscilloscopeData {
+  canvasHeight: number,
+  canvasWidth: number
+  windowHeight: number,
+  windowWidth: number,
+  waveOptions: waveOptionsInterface,
+}
+
+export default defineComponent({
   name: 'TheOscilloscope',
-  data() {
+  data(): OscilloscopeData {
     return {
-      canvasHeight: null,
-      canvasWidth: null,
+      canvasHeight: 0,
+      canvasWidth: 0,
       windowHeight: window.innerHeight,
       windowWidth: window.innerWidth,
       waveOptions: {
@@ -44,7 +60,7 @@ export default {
       this.windowWidth = window.innerWidth;
       this.resizeCanvas();
     });
-    this.timer = setInterval(() => {
+    setInterval(() => {
       this.plotCanvas();
     }, 25);
   },
@@ -53,8 +69,9 @@ export default {
       ['updateAmplitude', 'updateFrequency', 'updateHeightLimit', 'updateWidthLimit'],
     ),
     plotCanvas() {
-      const ctx = drawBackground(document.getElementById('oscilloscopeCanvas').getContext('2d'));
-      const w = new Wave(
+      const oscilloscopeCanvas: any = document.getElementById('oscilloscopeCanvas');
+      const ctx = drawBackground(oscilloscopeCanvas.getContext('2d'));
+      const w: any = new Wave(
         this.amplitude,
         ctx,
         this.frequency,
@@ -64,7 +81,9 @@ export default {
         0,
         0,
       );
-      w[this.waveOptions[this.waveChoice]]();
+      const waveChosen: keyof waveOptionsInterface = this.waveChoice;
+      const chosenOption: string = this.waveOptions[waveChosen];
+      w[chosenOption]();
     },
     resizeCanvas() {
       if (window.innerWidth <= 325) {
@@ -89,7 +108,7 @@ export default {
       this.updateFrequency(50);
     },
   },
-};
+});
 </script>
 
 <style scoped>
