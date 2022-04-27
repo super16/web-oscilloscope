@@ -1,10 +1,14 @@
 <template>
   <fieldset class="controller">
     <legend v-once>NOISE</legend>
-    <label class="controller__label">
+    <label
+      class="controller__label"
+      for="level"
+    >
       LEVEL
       <input
         v-model.number="noiseLevelValue"
+        id="level"
         type="range"
         min="0"
         max="30"

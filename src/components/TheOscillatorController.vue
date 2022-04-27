@@ -2,9 +2,13 @@
   <fieldset class="controller">
     <legend v-once>WAVE GENERATOR</legend>
       <div class="controller__faders">
-        <label class="controller__label">
+        <label
+          class="controller__label"
+          for="amplitude"
+        >
           AMPLITUDE
           <input
+            id="amplitude"
             v-model.number="amplitudeValue"
             class="controller__range"
             type="range"
@@ -13,9 +17,13 @@
             step="1"
           />
         </label>
-        <label class="controller__label">
+        <label
+          class="controller__label"
+          for="frequency"
+        >
           FREQUENCY
           <input
+            id="frequency"
             v-model.number="frequencyValue"
             class="controller__range"
             type="range"
@@ -26,8 +34,13 @@
         </label>
       </div>
       <div class="controller__radios">
-        <label v-for="(key, value) in waveType" :key="key">
+        <label
+          v-for="(key, value) in waveType"
+          :key="key"
+          :for="value"
+        >
           <input
+            :id="value"
             v-model.number="waveChoiceValue"
             type="radio"
             name="val"

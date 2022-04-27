@@ -1,5 +1,5 @@
 export default function drawBackground(
-  ctx: CanvasRenderingContext2D
+  ctx: CanvasRenderingContext2D,
 ): CanvasRenderingContext2D {
   const context = ctx;
   context.clearRect(0, 0, context.canvas.width, context.canvas.height);
