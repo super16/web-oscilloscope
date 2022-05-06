@@ -1,13 +1,18 @@
 import { InjectionKey } from 'vue';
-import { createStore, useStore as baseUseStore, Store } from 'vuex';
+import { createStore, Store } from 'vuex';
 
 export interface State {
   amplitude: number,
   frequency: number,
   noiseLevel: number,
-  heightLimit: any,
+  heightLimit: number | null,
   waveChoice: number,
-  widthLimit: any,
+  widthLimit?: number | null,
+}
+
+export interface P {
+  key: keyof State,
+  value: number,
 }
 
 export const key: InjectionKey<Store<State>> = Symbol('');
@@ -22,23 +27,11 @@ export const store = createStore<State>({
     widthLimit: null,
   },
   mutations: {
-    updateAmplitude(state, amplitude: number) {
-      state.amplitude = amplitude;
-    },
-    updateFrequency(state, frequency: number) {
-      state.frequency = frequency;
+    updateValue(state: State, payload: P): void {
+      state[payload.key] = payload.value;
     },
     updateHeightLimit(state, heightLimit: number) {
       state.heightLimit = heightLimit;
-    },
-    updateNoiseLevel(state, noiseLevel: number) {
-      state.noiseLevel = noiseLevel;
-    },
-    updateWaveChoice(state, waveChoice: number) {
-      state.waveChoice = waveChoice;
-    },
-    updateWidthLimit(state, widthLimit: number) {
-      state.widthLimit = widthLimit;
     },
   },
 });

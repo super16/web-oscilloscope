@@ -78,14 +78,18 @@ export default defineComponent({
   },
   computed: {
     ...mapState([
-      'amplitude', 'frequency', 'heightLimit', 'widthLimit', 'waveChoice',
+      'amplitude',
+      'frequency',
+      'heightLimit',
+      'waveChoice',
+      'widthLimit',
     ]),
     amplitudeValue: {
       get(): number {
         return this.amplitude;
       },
       set(value: number) {
-        this.updateAmplitude(value);
+        this.updateValue({ key: 'amplitude', value });
       },
     },
     frequencyValue: {
@@ -93,7 +97,7 @@ export default defineComponent({
         return this.frequency;
       },
       set(value: number) {
-        this.updateFrequency(value);
+        this.updateValue({ key: 'frequency', value });
       },
     },
     waveChoiceValue: {
@@ -101,14 +105,12 @@ export default defineComponent({
         return this.waveChoice;
       },
       set(value: number) {
-        this.updateWaveChoice(value);
+        this.updateValue({ key: 'waveChoice', value });
       },
     },
   },
   methods: {
-    ...mapMutations([
-      'updateAmplitude', 'updateFrequency', 'updateWaveChoice',
-    ]),
+    ...mapMutations(['updateValue']),
   },
 });
 </script>

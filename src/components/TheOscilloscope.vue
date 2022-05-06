@@ -65,9 +65,7 @@ export default defineComponent({
     }, 25);
   },
   methods: {
-    ...mapMutations(
-      ['updateAmplitude', 'updateFrequency', 'updateHeightLimit', 'updateWidthLimit'],
-    ),
+    ...mapMutations(['updateValue']),
     plotCanvas() {
       const oscilloscopeCanvas: any = document.getElementById('oscilloscopeCanvas');
       const ctx = drawBackground(oscilloscopeCanvas.getContext('2d'));
@@ -102,10 +100,10 @@ export default defineComponent({
         this.canvasWidth = 800;
         this.canvasHeight = 500;
       }
-      this.updateWidthLimit(this.canvasWidth);
-      this.updateHeightLimit(this.canvasHeight / 2);
-      this.updateAmplitude(50);
-      this.updateFrequency(50);
+      this.updateValue({ key: 'widthLimit', value: this.canvasWidth });
+      this.updateValue({ key: 'heightLimit', value: this.canvasHeight / 2 });
+      this.updateValue({ key: 'amplitude', value: 50 });
+      this.updateValue({ key: 'frequency', value: 50 });
     },
   },
 });

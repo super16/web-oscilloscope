@@ -32,12 +32,12 @@ export default defineComponent({
         return this.noiseLevel;
       },
       set(value: number) {
-        this.updateNoiseLevel(value);
+        this.updateValue({ key: 'noiseLevel', value });
       },
     },
   },
   methods: {
-    ...mapMutations(['updateNoiseLevel']),
+    ...mapMutations(['updateValue']),
   },
 });
 </script>
