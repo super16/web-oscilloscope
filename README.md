@@ -25,7 +25,7 @@ npm install
 npm run serve
 ```
 
-### Production buld
+### Production build
 
 ```bash
 npm run build
