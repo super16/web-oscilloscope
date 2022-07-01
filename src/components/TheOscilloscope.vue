@@ -1,9 +1,11 @@
 <template>
   <fieldset class="oscilloscope">
-    <legend v-once>DISPLAY</legend>
+    <legend v-once>
+      DISPLAY
+    </legend>
     <canvas
-      class="oscilloscope__canvas"
       id="oscilloscopeCanvas"
+      class="oscilloscope__canvas"
       :width="canvasWidth"
       :height="canvasHeight"
     />
@@ -16,7 +18,7 @@ import { mapState, mapMutations } from 'vuex';
 import drawBackground from '@/utils/drawBackground';
 import Wave from '@/utils/waveForm';
 
-interface waveOptionsInterface {
+interface WaveOptionsInterface {
   0: string,
   1: string,
   2: string,
@@ -28,7 +30,7 @@ interface OscilloscopeData {
   canvasWidth: number
   windowHeight: number,
   windowWidth: number,
-  waveOptions: waveOptionsInterface,
+  waveOptions: WaveOptionsInterface,
 }
 
 export default defineComponent({
@@ -79,7 +81,7 @@ export default defineComponent({
         0,
         0,
       );
-      const waveChosen: keyof waveOptionsInterface = this.waveChoice;
+      const waveChosen: keyof WaveOptionsInterface = this.waveChoice;
       const chosenOption: string = this.waveOptions[waveChosen];
       w[chosenOption]();
     },

@@ -1,55 +1,57 @@
 <template>
   <fieldset class="controller">
-    <legend v-once>WAVE GENERATOR</legend>
-      <div class="controller__faders">
-        <label
-          class="controller__label"
-          for="amplitude"
+    <legend v-once>
+      WAVE GENERATOR
+    </legend>
+    <div class="controller__faders">
+      <label
+        class="controller__label"
+        for="amplitude"
+      >
+        AMPLITUDE
+        <input
+          id="amplitude"
+          v-model.number="amplitudeValue"
+          class="controller__range"
+          type="range"
+          min="0"
+          :max="heightLimit"
+          step="1"
         >
-          AMPLITUDE
-          <input
-            id="amplitude"
-            v-model.number="amplitudeValue"
-            class="controller__range"
-            type="range"
-            min="0"
-            :max="heightLimit"
-            step="1"
-          />
-        </label>
-        <label
-          class="controller__label"
-          for="frequency"
+      </label>
+      <label
+        class="controller__label"
+        for="frequency"
+      >
+        FREQUENCY
+        <input
+          id="frequency"
+          v-model.number="frequencyValue"
+          class="controller__range"
+          type="range"
+          min="1"
+          :max="widthLimit"
+          step="1"
         >
-          FREQUENCY
-          <input
-            id="frequency"
-            v-model.number="frequencyValue"
-            class="controller__range"
-            type="range"
-            min="1"
-            :max="widthLimit"
-            step="1"
-          />
-        </label>
-      </div>
-      <div class="controller__radios">
-        <label
-          v-for="(key, value) in waveType"
-          :key="key"
-          :for="value"
+      </label>
+    </div>
+    <div class="controller__radios">
+      <label
+        v-for="(key, value) in waveType"
+        :key="key"
+        :for="value"
+      >
+        <input
+          :id="value"
+          v-model.number="waveChoiceValue"
+          type="radio"
+          name="val"
+          :value="key"
+          class="controller__radio"
         >
-          <input
-            :id="value"
-            v-model.number="waveChoiceValue"
-            type="radio"
-            name="val"
-            :value="key"
-            class="controller__radio"
-          />
-          {{ value }}
-        </label>
-      </div>
+        {{ value }}
+      </label>
+    </div>
   </fieldset>
 </template>
 
@@ -57,7 +59,7 @@
 import { defineComponent } from 'vue';
 import { mapState, mapMutations } from 'vuex';
 
-interface waveTypesInterface {
+interface WaveTypesInterface {
   sine: number,
   square: number,
   triangular: number,
@@ -73,7 +75,7 @@ export default defineComponent({
         square: 1,
         triangular: 2,
         saw: 3,
-      } as waveTypesInterface,
+      } as WaveTypesInterface,
     };
   },
   computed: {
