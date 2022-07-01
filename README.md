@@ -22,7 +22,7 @@ npm install
 ### Development Run
 
 ```bash
-npm run serve
+npm run dev
 ```
 
 ### Production build

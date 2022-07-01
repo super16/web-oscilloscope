@@ -11,8 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet" />
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <link rel="icon" href="/favicon.ico" />
     <style>
       body {
         background: linear-gradient(to right, black, rgb(0, 0, 50)),
@@ -30,15 +30,9 @@
       }
     </style>
     <title>Web Oscilloscope</title>
+    <script type="module" src="/src/main.ts"></script>
   </head>
   <body>
-    <noscript>
-      <strong
-        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
-        properly without JavaScript enabled. Please enable it to
-        continue.</strong
-      >
-    </noscript>
     <div id="app"></div>
     <footer>made by <a href="https://github.com/super16">super16</a></footer>
   </body>
