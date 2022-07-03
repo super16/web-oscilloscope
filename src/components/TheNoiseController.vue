@@ -1,3 +1,19 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+import { key } from '@/store';
+
+const store = useStore(key);
+const noiseLevelValue = computed<number>({
+  get(): number {
+    return store.state.noiseLevel;
+  },
+  set(value: number) {
+    store.commit('updateValue', { key: 'noiseLevel', value });
+  },
+});
+</script>
+
 <template>
   <fieldset class="controller">
     <legend v-once>
@@ -20,29 +36,6 @@
     </label>
   </fieldset>
 </template>
-
-<script lang='ts'>
-import { defineComponent } from 'vue';
-import { mapState, mapMutations } from 'vuex';
-
-export default defineComponent({
-  name: 'TheNoiseController',
-  computed: {
-    ...mapState(['noiseLevel']),
-    noiseLevelValue: {
-      get(): number {
-        return this.noiseLevel;
-      },
-      set(value: number) {
-        this.updateValue({ key: 'noiseLevel', value });
-      },
-    },
-  },
-  methods: {
-    ...mapMutations(['updateValue']),
-  },
-});
-</script>
 
 <style scoped>
 .controller__label {

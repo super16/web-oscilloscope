@@ -5,9 +5,9 @@ export interface State {
   amplitude: number,
   frequency: number,
   noiseLevel: number,
-  heightLimit: number | null,
+  heightLimit: number,
   waveChoice: number,
-  widthLimit?: number | null,
+  widthLimit?: number,
 }
 
 export interface P {
@@ -22,9 +22,9 @@ export const store = createStore<State>({
     amplitude: 50,
     frequency: 50,
     noiseLevel: 5,
-    heightLimit: null,
+    heightLimit: 0,
     waveChoice: 0,
-    widthLimit: null,
+    widthLimit: 0,
   },
   mutations: {
     updateValue(state: State, payload: P): void {

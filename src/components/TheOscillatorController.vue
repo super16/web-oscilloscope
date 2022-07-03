@@ -1,3 +1,45 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+
+import { WaveTypes } from '@/types';
+import { key } from '@/store';
+
+const store = useStore(key);
+
+const waveType: WaveTypes = {
+  sine: 0,
+  square: 1,
+  triangular: 2,
+  saw: 3,
+};
+
+const amplitudeValue = computed<number>({
+  get(): number {
+    return store.state.amplitude;
+  },
+  set(value: number) {
+    store.commit('updateValue', { key: 'amplitude', value });
+  },
+});
+const frequencyValue = computed<number>({
+  get(): number {
+    return store.state.frequency;
+  },
+  set(value: number) {
+    store.commit('updateValue', { key: 'frequency', value });
+  },
+});
+const waveChoiceValue = computed<number>({
+  get(): number {
+    return store.state.waveChoice;
+  },
+  set(value: number) {
+    store.commit('updateValue', { key: 'waveChoice', value });
+  },
+});
+</script>
+
 <template>
   <fieldset class="controller">
     <legend v-once>
@@ -15,7 +57,7 @@
           class="controller__range"
           type="range"
           min="0"
-          :max="heightLimit"
+          :max="store.state.heightLimit"
           step="1"
         >
       </label>
@@ -30,92 +72,30 @@
           class="controller__range"
           type="range"
           min="1"
-          :max="widthLimit"
+          :max="store.state.widthLimit"
           step="1"
         >
       </label>
     </div>
     <div class="controller__radios">
       <label
-        v-for="(key, value) in waveType"
-        :key="key"
-        :for="value"
+        v-for="(k, v) in waveType"
+        :key="k"
+        :for="v"
       >
         <input
-          :id="value"
+          :id="v"
           v-model.number="waveChoiceValue"
           type="radio"
           name="val"
-          :value="key"
+          :value="k"
           class="controller__radio"
         >
-        {{ value }}
+        {{ v }}
       </label>
     </div>
   </fieldset>
 </template>
-
-<script lang='ts'>
-import { defineComponent } from 'vue';
-import { mapState, mapMutations } from 'vuex';
-
-interface WaveTypesInterface {
-  sine: number,
-  square: number,
-  triangular: number,
-  saw: number,
-}
-
-export default defineComponent({
-  name: 'TheOscillatorController',
-  data() {
-    return {
-      waveType: {
-        sine: 0,
-        square: 1,
-        triangular: 2,
-        saw: 3,
-      } as WaveTypesInterface,
-    };
-  },
-  computed: {
-    ...mapState([
-      'amplitude',
-      'frequency',
-      'heightLimit',
-      'waveChoice',
-      'widthLimit',
-    ]),
-    amplitudeValue: {
-      get(): number {
-        return this.amplitude;
-      },
-      set(value: number) {
-        this.updateValue({ key: 'amplitude', value });
-      },
-    },
-    frequencyValue: {
-      get(): number {
-        return this.frequency;
-      },
-      set(value: number) {
-        this.updateValue({ key: 'frequency', value });
-      },
-    },
-    waveChoiceValue: {
-      get(): number {
-        return this.waveChoice;
-      },
-      set(value: number) {
-        this.updateValue({ key: 'waveChoice', value });
-      },
-    },
-  },
-  methods: {
-    ...mapMutations(['updateValue']),
-  },
-});
-</script>
 
 <style scoped>
 .controller__faders {

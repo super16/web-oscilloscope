@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import TheHeader from '@/components/TheHeader.vue';
+import TheNoiseController from '@/components/TheNoiseController.vue';
+import TheOscilloscope from '@/components/TheOscilloscope.vue';
+import TheOscillatorController from '@/components/TheOscillatorController.vue';
+</script>
+
 <template>
   <TheHeader />
   <main>
@@ -8,24 +15,6 @@
     </div>
   </main>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue';
-import TheHeader from '@/components/TheHeader.vue';
-import TheNoiseController from '@/components/TheNoiseController.vue';
-import TheOscilloscope from '@/components/TheOscilloscope.vue';
-import TheOscillatorController from '@/components/TheOscillatorController.vue';
-
-export default defineComponent({
-  name: 'App',
-  components: {
-    TheHeader,
-    TheNoiseController,
-    TheOscillatorController,
-    TheOscilloscope,
-  },
-});
-</script>
 
 <style scoped>
 .controllers {
