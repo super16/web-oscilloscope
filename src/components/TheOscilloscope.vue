@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { useStore } from 'vuex';
+import { oscStore } from '@/store';
 
 import drawBackground from '@/utils/drawBackground';
 import Wave from '@/utils/waveForm';
-import { key } from '@/store';
 import { WaveOptionsType } from '@/types';
 
 let canvasHeight = ref<number>(0);
@@ -17,23 +16,23 @@ const waveOptions: WaveOptionsType = {
   2: 'triangleWave',
   3: 'sawWave',
 };
-const store = useStore(key);
+const store = oscStore();
 
 function plotCanvas() {
   const oscilloscopeCanvas = <HTMLCanvasElement>document.getElementById('oscilloscopeCanvas');
   const oscCtx = <CanvasRenderingContext2D>oscilloscopeCanvas.getContext('2d');
   const ctx: CanvasRenderingContext2D = drawBackground(oscCtx);
   const w: any = new Wave(
-    store.state.amplitude,
+    store.amplitude,
     ctx,
-    store.state.frequency,
+    store.frequency,
     ctx.canvas.height,
-    store.state.noiseLevel,
+    store.noiseLevel,
     ctx.canvas.width,
     0,
     0,
   );
-  const waveChosen = <keyof WaveOptionsType>store.state.waveChoice;
+  const waveChosen = <keyof WaveOptionsType>store.waveChoice;
   const chosenOption: WaveOptionsType[keyof WaveOptionsType] = waveOptions[waveChosen];
   w[chosenOption]();
 }
@@ -55,10 +54,10 @@ function resizeCanvas() {
     canvasWidth.value = 800;
     canvasHeight.value = 500;
   }
-  store.commit('updateValue', { key: 'widthLimit', value: canvasWidth.value });
-  store.commit('updateValue', { key: 'heightLimit', value: canvasHeight.value / 2 });
-  store.commit('updateValue', { key: 'amplitude', value: 50 });
-  store.commit('updateValue', { key: 'frequency', value: 50 });
+  store.widthLimit = canvasWidth.value;
+  store.heightLimit = canvasHeight.value / 2;
+  store.amplitude = 50;
+  store.frequency = 50;
 }
 
 resizeCanvas();

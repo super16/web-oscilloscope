@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useStore } from 'vuex';
-
+import { oscStore } from '@/store';
 import { WaveTypes } from '@/types';
-import { key } from '@/store';
 
-const store = useStore(key);
+const store = oscStore();
 
 const waveType: WaveTypes = {
   sine: 0,
@@ -16,26 +14,26 @@ const waveType: WaveTypes = {
 
 const amplitudeValue = computed<number>({
   get(): number {
-    return store.state.amplitude;
+    return store.amplitude;
   },
   set(value: number) {
-    store.commit('updateValue', { key: 'amplitude', value });
+    store.amplitude = value;
   },
 });
 const frequencyValue = computed<number>({
   get(): number {
-    return store.state.frequency;
+    return store.frequency;
   },
   set(value: number) {
-    store.commit('updateValue', { key: 'frequency', value });
+    store.frequency = value;
   },
 });
 const waveChoiceValue = computed<number>({
   get(): number {
-    return store.state.waveChoice;
+    return store.waveChoice;
   },
   set(value: number) {
-    store.commit('updateValue', { key: 'waveChoice', value });
+    store.waveChoice = value;
   },
 });
 </script>
@@ -57,7 +55,7 @@ const waveChoiceValue = computed<number>({
           class="controller__range"
           type="range"
           min="0"
-          :max="store.state.heightLimit"
+          :max="store.heightLimit"
           step="1"
         >
       </label>
@@ -72,7 +70,7 @@ const waveChoiceValue = computed<number>({
           class="controller__range"
           type="range"
           min="1"
-          :max="store.state.widthLimit"
+          :max="store.widthLimit"
           step="1"
         >
       </label>

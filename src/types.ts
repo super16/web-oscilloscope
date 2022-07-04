@@ -11,3 +11,12 @@ export interface WaveOptionsType {
   2: string,
   3: string,
 }
+
+export interface OscState {
+  amplitude: number,
+  frequency: number,
+  noiseLevel: number,
+  heightLimit: number,
+  waveChoice: number,
+  widthLimit?: number,
+}

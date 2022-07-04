@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "path": "^0.12.7",
-    "vue": "^3.2.33",
-    "vuex": "^4.0.2"
+    "pinia": "^2.0.14",
+    "vue": "^3.2.33"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",

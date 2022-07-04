@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useStore } from 'vuex';
-import { key } from '@/store';
+import { oscStore } from '@/store';
 
-const store = useStore(key);
+const store = oscStore();
 const noiseLevelValue = computed<number>({
   get(): number {
-    return store.state.noiseLevel;
+    return store.noiseLevel;
   },
   set(value: number) {
-    store.commit('updateValue', { key: 'noiseLevel', value });
+    store.noiseLevel = value;
   },
 });
 </script>
