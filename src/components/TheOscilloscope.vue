@@ -18,9 +18,11 @@ const waveOptions: WaveOptionsType = {
 };
 const store = oscStore();
 
+
+
 function plotCanvas() {
-  const oscilloscopeCanvas = <HTMLCanvasElement>document.getElementById('oscilloscopeCanvas');
-  const oscCtx = <CanvasRenderingContext2D>oscilloscopeCanvas.getContext('2d');
+  const oscilloscopeCanvas = document.getElementById('oscilloscopeCanvas') as HTMLCanvasElement;
+  const oscCtx = oscilloscopeCanvas.getContext('2d') as CanvasRenderingContext2D;
   const ctx: CanvasRenderingContext2D = drawBackground(oscCtx);
   const w: any = new Wave(
     store.amplitude,
@@ -32,7 +34,7 @@ function plotCanvas() {
     0,
     0,
   );
-  const waveChosen = <keyof WaveOptionsType>store.waveChoice;
+  const waveChosen: keyof WaveOptionsType = store.waveChoice;
   const chosenOption: WaveOptionsType[keyof WaveOptionsType] = waveOptions[waveChosen];
   w[chosenOption]();
 }

@@ -6,10 +6,7 @@ export interface WaveTypes {
 }
 
 export interface WaveOptionsType {
-  0: string,
-  1: string,
-  2: string,
-  3: string,
+  [key: number]: string
 }
 
 export interface OscState {
