@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="application-name" content="Web oscilloscope">
     <meta name="author" content="super16">
     <meta name="description" content="Web oscilloscope application made with Vue.js">
     <meta name="keywords" content="CSS, HTML, oscilloscope, JavaScript, Vue.js, canvas">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet" />
-    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="/css/style.css" rel="stylesheet">
+    <link rel="icon" href="/favicon.ico">
     <style>
+      @font-face {
+        font-family: 'Press Start 2P';
+        font-style: normal;
+        font-weight: 400;
+        src: local(''),
+          url('/fonts/press-start-2p-v14-latin-regular.woff2') format('woff2'),
+          url('/fonts/press-start-2p-v14-latin-regular.woff') format('woff');
+      }
       body {
         background: linear-gradient(to right, black, rgb(0, 0, 50)),
           url("img/noise.svg");
         color: white;
         display: flex;
         flex-direction: column;
-        font-family: 'Press Start 2P', cursive;
+        font-family: 'Press Start 2P', normal;
         margin: 0;
         min-height: 100%;
         padding: 0;
