@@ -18,8 +18,6 @@ const waveOptions: WaveOptionsType = {
 };
 const store = oscStore();
 
-
-
 function plotCanvas() {
   const oscilloscopeCanvas = document.getElementById('oscilloscopeCanvas') as HTMLCanvasElement;
   const oscCtx = oscilloscopeCanvas.getContext('2d') as CanvasRenderingContext2D;
