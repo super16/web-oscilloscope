@@ -45,21 +45,21 @@ describe('TheNoiseController.vue', () => {
   });
 
   it('set correct new value', async () => {
-    await input.setValue(10);
-    expect(Number(input.element.value)).toBe(10);
-    expect(store.noiseLevel).toBe(10);
+    input.setValue(10);
+    await expect(Number(input.element.value)).toBe(10);
+    await expect(store.noiseLevel).toBe(10);
   });
 
   it('should not set negative value', async () => {
-    await input.setValue(-10);
-    expect(Number(input.element.value)).toBe(0);
-    expect(store.noiseLevel).toBe(0);
+    input.setValue(-10);
+    await expect(Number(input.element.value)).toBe(0);
+    await expect(store.noiseLevel).toBe(0);
   });
 
   it('should not set over maximum value', async () => {
-    await input.setValue(400);
-    expect(Number(input.element.value)).toBe(30);
-    expect(store.noiseLevel).toBe(30);
+    input.setValue(400);
+    await expect(Number(input.element.value)).toBe(30);
+    await expect(store.noiseLevel).toBe(30);
   });
 
   it('set input correct new value from store', async () => {
