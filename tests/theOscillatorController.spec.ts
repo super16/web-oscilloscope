@@ -24,6 +24,15 @@ describe('TheOscillatorController.vue', () => {
   const frequencyLabel = fadersLabels[1];
   const amplitudeInput = amplitudeLabel.find('input');
   const frequencyInput = frequencyLabel.find('input');
+  const radiosLabels = radios.findAll('label');
+  const sineWaveLabel = radiosLabels[0];
+  const squareWaveLabel = radiosLabels[1];
+  const triangularWaveLabel = radiosLabels[2];
+  const sawWaveLabel = radiosLabels[3];
+  const sineWaveInput = sineWaveLabel.find('input');
+  const squareWaveInput = squareWaveLabel.find('input');
+  const triangularWaveInput = triangularWaveLabel.find('input');
+  const sawWaveInput = sawWaveLabel.find('input');
 
   it('should render controller title', () => {
     const controllerTitle = 'WAVE GENERATOR';
@@ -67,5 +76,77 @@ describe('TheOscillatorController.vue', () => {
   it('should have correct input value from store', async () => {
     await expect(Number(amplitudeInput.element.value)).toBe(0);
     await expect(Number(frequencyInput.element.value)).toBe(0);
+    await expect(Number(frequencyInput.element.value)).toBe(0);
+  });
+
+  it('set correct new input values', async () => {
+    store.heightLimit = 500;
+    store.widthLimit = 500;
+    await expect(store.heightLimit).toBe(500);
+    await expect(store.widthLimit).toBe(500);
+    await expect(Number(amplitudeInput.element.max)).toBe(500);
+    await expect(Number(frequencyInput.element.max)).toBe(500);
+    amplitudeInput.setValue(100);
+    frequencyInput.setValue(100);
+    await expect(Number(amplitudeInput.element.value)).toBe(100);
+    await expect(store.amplitude).toBe(100);
+  });
+
+  it('set input correct new value from store', async () => {
+    store.heightLimit = 500;
+    store.widthLimit = 500;
+    await expect(store.heightLimit).toBe(500);
+    await expect(store.widthLimit).toBe(500);
+    store.amplitude = 15;
+    await expect(store.amplitude).toBe(15);
+    await expect(Number(amplitudeInput.element.value)).toBe(15);
+    store.frequency = 15;
+    await expect(store.frequency).toBe(15);
+    await expect(Number(frequencyInput.element.value)).toBe(15);
+  });
+
+  it('should render radios titles', () => {
+    const sineWaveLabelText = 'sine';
+    const squareWaveLabelText = 'square';
+    const triangularWaveLabelText = 'triangular';
+    const sawWaveLabelText = 'saw';
+    expect(sineWaveLabel.text()).toBe(sineWaveLabelText);
+    expect(squareWaveLabel.text()).toBe(squareWaveLabelText);
+    expect(triangularWaveLabel.text()).toBe(triangularWaveLabelText);
+    expect(sawWaveLabel.text()).toBe(sawWaveLabelText);
+  });
+
+  it('should have correct radio input value', async () => {
+    await expect(Number(sineWaveInput.element.value)).toBe(0);
+    await expect(Number(sineWaveInput.element.checked)).toBeTruthy();
+    await expect(Number(squareWaveInput.element.value)).toBe(1);
+    await expect(Number(triangularWaveInput.element.value)).toBe(2);
+    await expect(Number(sawWaveInput.element.value)).toBe(3);
+  });
+
+  it('set input correct new value to radio from store', async () => {
+    store.waveChoice = 1;
+    await expect(store.waveChoice).toBe(1);
+    await expect(Number(squareWaveInput.element.checked)).toBeTruthy();
+    store.waveChoice = 2;
+    await expect(store.waveChoice).toBe(2);
+    await expect(Number(triangularWaveInput.element.checked)).toBeTruthy();
+    store.waveChoice = 3;
+    await expect(store.waveChoice).toBe(3);
+    await expect(Number(sawWaveInput.element.checked)).toBeTruthy();
+    store.waveChoice = 0;
+    await expect(store.waveChoice).toBe(0);
+    await expect(Number(sineWaveInput.element.checked)).toBeTruthy();
+  });
+
+  it('set correct new checked radio values', async () => {
+    await sineWaveInput.setValue(true);
+    await expect(Number(sineWaveInput.element.checked)).toBeTruthy();
+    await squareWaveInput.setValue(true);
+    await expect(Number(squareWaveInput.element.checked)).toBeTruthy();
+    await triangularWaveInput.setValue(true);
+    await expect(Number(triangularWaveInput.element.checked)).toBeTruthy();
+    await sawWaveInput.setValue(true);
+    await expect(Number(sawWaveInput.element.checked)).toBeTruthy();
   });
 });
