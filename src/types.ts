@@ -11,6 +11,7 @@ export interface WaveOptionsType {
 
 export interface OscState {
   amplitude: number,
+  cutoff: number,
   frequency: number,
   noiseLevel: number,
   heightLimit: number,

@@ -25,15 +25,21 @@ npm install
 npm run dev
 ```
 
+### Lint
+
+```bash
+npm run lint
+```
+
+### Test
+
+```bash
+npm run test
+npm run coverage
+```
+
 ### Production build
 
 ```bash
 npm run build
 ```
-
-## Things To Do
-
-* Documentation for code
-* Tests
-* Wave Filters & Modulators
-* Calculate `Wave` with WebAssembly

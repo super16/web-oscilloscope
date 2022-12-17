@@ -2,6 +2,7 @@ export default class Wave {
   constructor(
     public amplitude: number,
     public ctx: CanvasRenderingContext2D,
+    public cutoff: number,
     public frequency: number,
     public height: number,
     public noise: number,
@@ -11,6 +12,7 @@ export default class Wave {
   ) {
     this.amplitude = amplitude;
     this.ctx = ctx;
+    this.cutoff = cutoff;
     this.frequency = frequency;
     this.height = height;
     this.noise = noise;
@@ -24,6 +26,7 @@ export default class Wave {
       this.x += this.randomNoise();
       this.y = this.height / 2 + (this.amplitude
         * Math.sin((2 * Math.PI * this.x) / this.frequency));
+      this.cutoffFilter();
       this.y += this.randomNoise();
       this.ctx.lineTo(this.x, this.y);
       this.x += 1;
@@ -36,6 +39,7 @@ export default class Wave {
       this.x += this.randomNoise();
       this.y = this.height / 2
         + Math.sign(Math.sin((2 * Math.PI * this.x) / this.frequency)) * this.amplitude;
+      this.cutoffFilter();
       this.y += this.randomNoise();
       this.ctx.lineTo(this.x, this.y);
       this.x += 1;
@@ -49,6 +53,7 @@ export default class Wave {
       this.y = this.height / 2 + (4 * (this.amplitude / this.frequency))
         * Math.abs(((((this.x - this.frequency / 4) % this.frequency)
         + this.frequency) % this.frequency) - (this.frequency / 2)) - this.amplitude;
+      this.cutoffFilter();
       this.y += this.randomNoise();
       this.ctx.lineTo(this.x, this.y);
       this.x += 1;
@@ -61,6 +66,7 @@ export default class Wave {
       this.x += this.randomNoise();
       this.y = this.height / 2 + ((2 * this.amplitude) / Math.PI)
         * Math.atan(1 / Math.tan((this.x * Math.PI) / this.frequency));
+      this.cutoffFilter();
       this.y += this.randomNoise();
       this.ctx.lineTo(this.x, this.y);
       this.x += 1;
@@ -70,5 +76,13 @@ export default class Wave {
 
   randomNoise() {
     return (Math.random() * ((0 + this.noise / 2) - (0 - this.noise / 2)) + (0 - this.noise / 2));
+  }
+
+  cutoffFilter() {
+    if ((this.height / 2) < this.y && (this.height - this.cutoff) < this.y) {
+      this.y = this.height - this.cutoff;
+    } else if (this.y > 0 && this.y < (this.height / 2) && this.cutoff > this.y) {
+      this.y = this.cutoff;
+    }
   }
 }

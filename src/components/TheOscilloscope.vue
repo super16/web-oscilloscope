@@ -25,6 +25,7 @@ function plotCanvas() {
   const w: any = new Wave(
     store.amplitude,
     ctx,
+    store.cutoff,
     store.frequency,
     ctx.canvas.height,
     store.noiseLevel,

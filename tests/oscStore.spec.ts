@@ -9,6 +9,7 @@ describe('oscStore', () => {
 
   it('should have correct initial store values', () => {
     expect(store.amplitude).toBe(50);
+    expect(store.cutoff).toBe(0);
     expect(store.frequency).toBe(50);
     expect(store.noiseLevel).toBe(5);
     expect(store.heightLimit).toBe(0);
@@ -18,12 +19,14 @@ describe('oscStore', () => {
 
   it('should have correct store values after modification', () => {
     store.amplitude = 100;
+    store.cutoff = 100;
     store.frequency = 100;
     store.noiseLevel = 100;
     store.heightLimit = 100;
     store.waveChoice = 100;
     store.widthLimit = 100;
     expect(store.amplitude).toBe(100);
+    expect(store.cutoff).toBe(100);
     expect(store.frequency).toBe(100);
     expect(store.noiseLevel).toBe(100);
     expect(store.heightLimit).toBe(100);

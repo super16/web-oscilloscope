@@ -5,6 +5,7 @@ export const oscStore = defineStore('main', {
   state: (): OscState => {
     return {
       amplitude: 50,
+      cutoff: 0,
       frequency: 50,
       noiseLevel: 5,
       heightLimit: 0,
