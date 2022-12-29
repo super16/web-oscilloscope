@@ -81,7 +81,7 @@ export default class Wave {
   cutoffFilter() {
     if ((this.height / 2) < this.y && (this.height - this.cutoff) < this.y) {
       this.y = this.height - this.cutoff;
-    } else if (this.y > 0 && this.y < (this.height / 2) && this.cutoff > this.y) {
+    } else if (this.y >= 0 && this.y <= (this.height / 2) && this.cutoff > this.y) {
       this.y = this.cutoff;
     }
   }

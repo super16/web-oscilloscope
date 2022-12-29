@@ -20,11 +20,11 @@ const cutoffLevelValue = computed<number>({
     </legend>
     <label
       class="controller__label"
-      for="level"
+      for="cutoffLevel"
     >
       LEVEL
       <input
-        id="level"
+        id="cutoffLevel"
         v-model.number="cutoffLevelValue"
         type="range"
         min="0"

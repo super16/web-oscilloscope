@@ -20,11 +20,11 @@ const noiseLevelValue = computed<number>({
     </legend>
     <label
       class="controller__label"
-      for="level"
+      for="noiseLevel"
     >
       LEVEL
       <input
-        id="level"
+        id="noiseLevel"
         v-model.number="noiseLevelValue"
         type="range"
         min="0"

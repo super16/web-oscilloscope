@@ -79,6 +79,7 @@ const waveChoiceValue = computed<number>({
       <label
         v-for="(k, v) in waveType"
         :key="k"
+        class="radio__label"
         :for="v"
       >
         <input
@@ -101,6 +102,10 @@ const waveChoiceValue = computed<number>({
   flex-direction: column;
 }
 
+.radio__label:hover {
+  cursor: pointer;
+}
+
 .controller__radio {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -115,6 +120,7 @@ const waveChoiceValue = computed<number>({
 
 .controller__radio:hover {
   background-color: red;
+  cursor: pointer;
 }
 
 .controller__radio:checked {
