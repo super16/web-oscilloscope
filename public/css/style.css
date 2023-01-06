@@ -1,7 +1,3 @@
-#app {
-  flex-grow: 1;
-}
-
 fieldset {
   border: 0;
 }
@@ -11,7 +7,7 @@ fieldset > legend {
 }
 
 footer {
-  margin-right: 25px;
+  margin-right: var(--large);
   text-align: right;
   font-size: small;
 }
@@ -25,20 +21,37 @@ footer > a:hover {
   color: red;
 }
 
+header {
+  margin-top: var(--large);
+  text-align: center;
+}
+
+header h1 {
+  color: white;
+  font-size: var(--medium);
+}
+
 main {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-auto-rows: auto;
   justify-content: center;
-  padding: 0px 7%;
+  row-gap: var(--small);
 }
 
 .controller {
   display: flex;
   flex-direction: column;
-  margin: 0 0 25px 0;
   padding: 0;
   width: 100%;
+}
+
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+    header h1 {
+      font-size: 28px;
+    }
 }
 
 @media only screen 
@@ -47,7 +60,7 @@ main {
   and (-webkit-min-device-pixel-ratio: 3)
   and (orientation: portrait) { 
     main {
-      margin: 0 18px;
+      margin: 0 var(--medium);
     }
 }
 
@@ -57,37 +70,7 @@ main {
   and (orientation: portrait)
   and (-webkit-min-device-pixel-ratio: 1) {
     main {
-      padding: 0 32px;
-    }
-}
-
-@media only screen
-  and (min-device-width: 768px)
-  and (max-device-width: 1024px)
-  and (orientation: landscape)
-  and (-webkit-min-device-pixel-ratio: 1) {
-    main {
-      padding: 0 180px;
-    }
-}
-
-@media only screen 
-  and (min-device-width: 834px) 
-  and (max-device-width: 834px) 
-  and (orientation: portrait) 
-  and (-webkit-min-device-pixel-ratio: 2) {
-    main {
-      padding: 0 64px;
-    }
-}
-
-@media only screen 
-  and (min-device-width: 1024px) 
-  and (max-device-width: 1024px) 
-  and (orientation: portrait) 
-  and (-webkit-min-device-pixel-ratio: 2) {
-    main {
-      padding: 0 100px;
+      padding: 0 var(--extra-large);
     }
 }
 
@@ -95,6 +78,10 @@ main {
   and (min-device-width: 1025px)
   and (max-device-width: 4800px)
   and (-webkit-min-device-pixel-ratio: 1) {
+    header h1 {
+      font-size: var(--extra-large);
+    }
+
     main {
       align-items: initial;
       display: flex;

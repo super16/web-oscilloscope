@@ -91,10 +91,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.oscilloscope {
-  margin-bottom: 15px;
-}
-.oscilloscope__canvas {
+canvas {
   border: 3px solid #c0c0c0;
 }
 </style>

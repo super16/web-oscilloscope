@@ -98,10 +98,10 @@ const waveChoiceValue = computed<number>({
   appearance: none;
   border: 2px solid white;
   border-radius: 50%;
-  height: 16px;
+  height: var(--small);
   outline: none;
   position: relative;
-  width: 16px;
+  width: var(--small);
 }
 
 .controller__radio:hover {
@@ -134,11 +134,11 @@ const waveChoiceValue = computed<number>({
       display: flex;
       flex-direction: row;
       justify-content: center;
-      margin: 15px;
+      margin: var(--small);
     }
 
     .controller__radios > label {
-      margin-right: 30px;
+      margin-right: var(--extra-large);
     }
 }
 </style>
