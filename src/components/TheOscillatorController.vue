@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import RangeController from '@/components/RangeController.vue';
+
 import { computed } from 'vue';
 import { oscStore } from '@/store';
 import { WaveTypes } from '@/types';
@@ -44,36 +46,20 @@ const waveChoiceValue = computed<number>({
       WAVE GENERATOR
     </legend>
     <div class="controller__faders">
-      <label
-        class="controller__label"
-        for="amplitude"
-      >
-        AMPLITUDE
-        <input
-          id="amplitude"
-          v-model.number="amplitudeValue"
-          class="controller__range"
-          type="range"
-          min="0"
-          :max="store.heightLimit"
-          step="1"
-        >
-      </label>
-      <label
-        class="controller__label"
-        for="frequency"
-      >
-        FREQUENCY
-        <input
-          id="frequency"
-          v-model.number="frequencyValue"
-          class="controller__range"
-          type="range"
-          min="1"
-          :max="store.widthLimit"
-          step="1"
-        >
-      </label>
+      <RangeController
+        v-model:value="amplitudeValue"
+        :controller-id="`amplitude`"
+        :controller-label="`AMPLITUDE`"
+        :max="store.heightLimit"
+        :min="0"
+      />
+      <RangeController
+        v-model:value="frequencyValue"
+        :controller-id="`frequency`"
+        :controller-label="`FREQUENCY`"
+        :max="store.widthLimit"
+        :min="1"
+      />
     </div>
     <div class="controller__radios">
       <label

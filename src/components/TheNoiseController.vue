@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import RangeController from '@/components/RangeController.vue';
+
 import { computed } from 'vue';
 import { oscStore } from '@/store';
 
@@ -18,26 +20,11 @@ const noiseLevelValue = computed<number>({
     <legend v-once>
       NOISE
     </legend>
-    <label
-      class="controller__label"
-      for="noiseLevel"
-    >
-      LEVEL
-      <input
-        id="noiseLevel"
-        v-model.number="noiseLevelValue"
-        type="range"
-        min="0"
-        max="30"
-        step="1"
-        class="controller__range"
-      >
-    </label>
+    <RangeController
+      v-model:value="noiseLevelValue"
+      :controller-id="`noiseLevel`"
+      :max="30"
+      :min="0"
+    />
   </fieldset>
 </template>
-
-<style scoped>
-.controller__label {
-  width: auto;
-}
-</style>

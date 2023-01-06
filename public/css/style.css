@@ -41,51 +41,6 @@ main {
   width: 100%;
 }
 
-.controller__label {
-  display: flex;
-  flex-direction: column;
-  margin: 10px 0px;
-}
-
-.controller__range {
-  -webkit-appearance: none;
-  background: black;
-  border: 2px solid red;
-  height: 5px;
-  margin-top: 10px;
-  outline: none;
-}
-
-/* for Chrome/Safari */
-.controller__range::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  background: black;
-  border: 1px solid white;
-  border-radius: 2px;
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-}
-
-.controller__range::-webkit-slider-thumb:hover {
-  background: red;
-}
-
-/* for Firefox */
-.controller__range::-moz-range-thumb {
-  background: black;
-  border: 2px solid white;
-  border-radius: 2px;
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-}
-
-.controller__range::-moz-range-thumb:hover {
-  background: red;
-}
-
 @media only screen 
   and (min-device-width: 414px) 
   and (max-device-width: 736px) 
@@ -104,10 +59,6 @@ main {
     main {
       padding: 0 32px;
     }
-    .controller__label {
-      width: 100%;
-      margin: 20px;
-    }
 }
 
 @media only screen
@@ -117,9 +68,6 @@ main {
   and (-webkit-min-device-pixel-ratio: 1) {
     main {
       padding: 0 180px;
-    }
-    .controller__label {
-      margin: 20px;
     }
 }
 

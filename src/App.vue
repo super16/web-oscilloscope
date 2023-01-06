@@ -29,8 +29,6 @@ import TheOscillatorController from '@/components/TheOscillatorController.vue';
   and (max-device-width: 4800px)
   and (-webkit-min-device-pixel-ratio: 1) {
     .controllers {
-      display: flex;
-      flex-direction: column;
       width: auto;
     }
 }
