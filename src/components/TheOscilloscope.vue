@@ -11,10 +11,10 @@ let canvasWidth = ref<number>(0);
 let windowHeight = ref<number>(window.innerHeight);
 let windowWidth = ref<number>(window.innerWidth);
 const waveOptions: WaveOptionsType = {
-  0: 'sineWave',
-  1: 'squareWave',
-  2: 'triangleWave',
-  3: 'sawWave',
+  0: 'sine',
+  1: 'square',
+  2: 'triangle',
+  3: 'saw',
 };
 const store = oscStore();
 
@@ -24,18 +24,21 @@ function plotCanvas() {
   const ctx: CanvasRenderingContext2D = drawBackground(oscCtx);
   const w: any = new Wave(
     store.amplitude,
-    ctx,
     store.cutoff,
     store.frequency,
     ctx.canvas.height,
     store.noiseLevel,
-    ctx.canvas.width,
-    0,
-    0,
   );
   const waveChosen: keyof WaveOptionsType = store.waveChoice;
   const chosenOption: WaveOptionsType[keyof WaveOptionsType] = waveOptions[waveChosen];
-  w[chosenOption]();
+  let x: number = 0;
+  let y: number = 0;
+  while (x < ctx.canvas.width) {
+    y = w[chosenOption](x);
+    ctx.lineTo(x, y);
+    x += 1;
+  }
+  ctx.stroke();
 }
 
 function resizeCanvas() {
