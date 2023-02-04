@@ -113,6 +113,10 @@ const waveChoiceValue = computed<number>({
   border: 6px solid red;
 }
 
+.controller__radio:focus-visible {
+  border: 6px solid yellowgreen;
+}
+
 .controller__radios {
   display: flex;
   flex-direction: column;

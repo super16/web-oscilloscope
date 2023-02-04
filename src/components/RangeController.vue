@@ -51,6 +51,10 @@ label > input[type=range] {
   outline: none;
 }
 
+label > input[type=range]:focus-visible {
+  border-color: yellowgreen;
+}
+
 /* for Chrome/Safari */
 label > input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;

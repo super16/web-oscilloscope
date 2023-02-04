@@ -89,7 +89,10 @@ onMounted(() => {
       class="oscilloscope__canvas"
       :width="canvasWidth"
       :height="canvasHeight"
-    />
+      role="graphics-document"
+    >
+      <span>Oscilloscope display</span>
+    </canvas>
   </fieldset>
 </template>
 
