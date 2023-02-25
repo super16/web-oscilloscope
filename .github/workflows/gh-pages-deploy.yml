@@ -7,16 +7,24 @@ jobs:
   gh-pages-deploy:
     name: Deploying to Github Pages
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18]
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: pnpm/action-setup@v2
         with:
-          node-version: 16
+          version: 7
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
       - name: Install packages
-        run: npm i
+        run: pnpm i
       - name: Test packages
-        run: npm run test:unit
+        run: pnpm run test:unit
       - name: Set Creds
         run: git config user.name "Mark" && git config user.email "${{ secrets.EMAIL }}"
       - name: Deploy
-        run: npm run deploy
+        run: pnpm run deploy

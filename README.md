@@ -15,31 +15,31 @@ App can graphically display the following types of wave with white noise:
 
 ## Project setup
 
-```bash
-npm install
+```shell
+pnpm i
 ```
 
 ### Development Run
 
-```bash
-npm run dev
+```shell
+pnpm run dev
 ```
 
 ### Lint
 
-```bash
-npm run lint
+```shell
+pnpm run lint
 ```
 
 ### Test
 
-```bash
-npm run test
-npm run coverage
+```shell
+pnpm run test:unit
+pnpm run coverage
 ```
 
 ### Production build
 
-```bash
-npm run build
+```shell
+pnpm run build
 ```

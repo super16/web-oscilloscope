@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
@@ -12,6 +13,10 @@
     "coverage": "vitest run --coverage",
     "deploy": "node scripts/gh-pages-deploy.mjs"
   },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=7"
+  },
   "dependencies": {
     "path": "^0.12.7",
     "pinia": "^2.0.32",
@@ -20,6 +25,7 @@
   "devDependencies": {
     "@pinia/testing": "^0.0.15",
     "@types/node": "^18.14.1",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitest/coverage-istanbul": "^0.29.1",
