@@ -3,7 +3,8 @@ fieldset {
 }
 
 fieldset > legend {
-  color: yellowgreen;
+  color: var(--violet-fallback);
+  color: var(--violet);
 }
 
 footer {
@@ -18,7 +19,8 @@ footer > a {
 }
 
 footer > a:hover {
-  color: red;
+  color: var(--red-fallback);
+  color: var(--red);
 }
 
 header {

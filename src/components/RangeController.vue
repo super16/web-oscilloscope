@@ -43,16 +43,19 @@ label {
 }
 
 label > input[type=range] {
-  accent-color: red;
+  accent-color: var(--red-fallback);
+  accent-color: var(--red);
   background: black;
-  border: 2px solid red;
+  border: 2px solid var(--red-fallback);
+  border: 2px solid var(--red);
   height: 5px;
   margin-top: 10px;
   outline: none;
 }
 
 label > input[type=range]:focus-visible {
-  border-color: yellowgreen;
+  border-color: var(--violet-fallback);
+  border-color: var(--violet);
 }
 
 /* for Chrome/Safari */
@@ -68,7 +71,8 @@ label > input[type=range]::-webkit-slider-thumb {
 }
 
 label > input[type=range]::-webkit-slider-thumb:hover {
-  background: red;
+  background: var(--red-fallback);
+  background: var(--red);
 }
 
 /* for Firefox */
@@ -82,7 +86,8 @@ label > input[type=range]::-moz-range-thumb {
 }
 
 label > input[type=range]::-moz-range-thumb:hover {
-  background: red;
+  background: var(--red-fallback);
+  background: var(--red);
 }
 
 @media only screen

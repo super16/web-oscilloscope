@@ -105,16 +105,19 @@ const waveChoiceValue = computed<number>({
 }
 
 .controller__radio:hover {
-  background-color: red;
+  background-color: var(--red-fallback);
+  background-color: var(--red);
   cursor: pointer;
 }
 
 .controller__radio:checked {
-  border: 6px solid red;
+  border: 6px solid var(--red-fallback);
+  border: 6px solid var(--red);
 }
 
 .controller__radio:focus-visible {
-  border: 6px solid yellowgreen;
+  border: 6px solid var(--violet-fallback);
+  border: 6px solid var(--violet);
 }
 
 .controller__radios {
