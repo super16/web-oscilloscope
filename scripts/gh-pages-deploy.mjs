@@ -1,4 +1,3 @@
-
 import { execa } from 'execa';
 
 (async () => {
