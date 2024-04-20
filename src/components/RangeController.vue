@@ -8,12 +8,9 @@ defineProps({
   },
   max: { default: 0, type: Number },
   min: { default: 0, type: Number },
-  value: { required: true, type: Number },
 });
 
-defineEmits<{
-  (e: 'update:value', id: number): void
-}>();
+const model = defineModel<number>();
 </script>
 
 <template>
@@ -21,15 +18,11 @@ defineEmits<{
     {{ controllerLabel }}
     <input
       :id="controllerId"
+      v-model="model"
       :max="max"
       :min="min"
       step="1"
       type="range"
-      :value="value"
-      @input="$emit(
-        'update:value',
-        Number(($event.target as HTMLInputElement).value)
-      )"
     >
   </label>
 </template>
@@ -42,7 +35,7 @@ label {
   width: auto;
 }
 
-label > input[type=range] {
+label>input[type=range] {
   accent-color: var(--red-fallback);
   accent-color: var(--red);
   background: black;
@@ -53,13 +46,13 @@ label > input[type=range] {
   outline: none;
 }
 
-label > input[type=range]:focus-visible {
+label>input[type=range]:focus-visible {
   border-color: var(--violet-fallback);
   border-color: var(--violet);
 }
 
 /* for Chrome/Safari */
-label > input[type=range]::-webkit-slider-thumb {
+label>input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   background: black;
@@ -70,13 +63,13 @@ label > input[type=range]::-webkit-slider-thumb {
   width: 15px;
 }
 
-label > input[type=range]::-webkit-slider-thumb:hover {
+label>input[type=range]::-webkit-slider-thumb:hover {
   background: var(--red-fallback);
   background: var(--red);
 }
 
 /* for Firefox */
-label > input[type=range]::-moz-range-thumb {
+label>input[type=range]::-moz-range-thumb {
   background: black;
   border: 2px solid white;
   border-radius: 2px;
@@ -85,17 +78,14 @@ label > input[type=range]::-moz-range-thumb {
   width: 15px;
 }
 
-label > input[type=range]::-moz-range-thumb:hover {
+label>input[type=range]::-moz-range-thumb:hover {
   background: var(--red-fallback);
   background: var(--red);
 }
 
-@media only screen
-  and (min-device-width: 768px)
-  and (max-device-width: 1024px)
-  and (-webkit-min-device-pixel-ratio: 1) {
-    label {
-      margin: 20px;
-    }
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  label {
+    margin: 20px;
+  }
 }
 </style>

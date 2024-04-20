@@ -1,12 +1,3 @@
-fieldset {
-  border: 0;
-}
-
-fieldset > legend {
-  color: var(--violet-fallback);
-  color: var(--violet);
-}
-
 footer {
   margin-right: var(--large);
   text-align: right;
@@ -38,13 +29,6 @@ main {
   grid-auto-rows: auto;
   justify-content: center;
   row-gap: var(--small);
-}
-
-.controller {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  width: 100%;
 }
 
 @media only screen
