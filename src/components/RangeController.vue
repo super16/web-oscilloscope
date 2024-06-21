@@ -18,7 +18,7 @@ const model = defineModel<number>();
     {{ controllerLabel }}
     <input
       :id="controllerId"
-      v-model="model"
+      v-model.number="model"
       :max="max"
       :min="min"
       step="1"
