@@ -31,13 +31,6 @@ pnpm run dev
 pnpm run lint
 ```
 
-### Test
-
-```shell
-pnpm run test:unit
-pnpm run coverage
-```
-
 ### Production build
 
 ```shell

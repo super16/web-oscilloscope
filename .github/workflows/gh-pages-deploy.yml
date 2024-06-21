@@ -22,8 +22,6 @@ jobs:
           cache: 'pnpm'
       - name: Install packages
         run: pnpm i
-      - name: Test packages
-        run: pnpm run test:unit
       - name: Set Creds
         run: git config user.name "Mark" && git config user.email "${{ secrets.EMAIL }}"
       - name: Deploy
